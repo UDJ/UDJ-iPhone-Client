@@ -18,7 +18,6 @@
  */
 
 #import "UDJSong.h"
-#import "RKJSONParserJSONKit.h"
 
 // Active Playlist Entry
 @implementation UDJSong
@@ -57,9 +56,6 @@
     }
     song.timeAdded = [songDict objectForKey:@"time_added"];
     
-    // parse the adder into a dictionary to create UDJUser object
-    /*RKJSONParserJSONKit* parser = [RKJSONParserJSONKit new];
-    NSDictionary* adderDict = [parser objectFromString:[songDict objectForKey:@"adder"] error:nil];*/
     song.adder = [UDJUser userFromDict: [songDict objectForKey:@"adder"]];
     return song;
 }
