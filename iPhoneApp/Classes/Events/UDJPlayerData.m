@@ -35,24 +35,14 @@
     
     // create URL
     NSString* urlString = client.baseURLString;
-    urlString = [urlString stringByAppendingString:@"/players"];
+    urlString = [urlString stringByAppendingString:[NSString stringWithFormat:@"/players?latitude=%f&longitude=%f", latitude, longitude, nil]];
     NSURL* url = [NSURL URLWithString:urlString];
-    
-    // create location dictionary
-    NSDictionary* locationDict = [NSDictionary dictionaryWithObjectsAndKeys:
-                                  [NSNumber numberWithFloat:latitude], @"latitude",
-                                  [NSNumber numberWithFloat:longitude], @"longitude", nil];
     
     // create GET request
     UDJRequest* request = [[UDJRequest alloc] initWithURL:url];
     request.delegate = playerListDelegate;
-    request.HTTPBodyString = [locationDict JSONString];
-    NSLog([url absoluteString]);
-    NSLog(@"BODY: %@", request.HTTPBodyString);
     request.method = UDJRequestMethodGET;
-    NSMutableDictionary* dictWithContentType = [NSMutableDictionary dictionaryWithDictionary:globalData.headers];
-    [dictWithContentType setObject:@"text/json" forKey:@"content-type"];
-    request.additionalHTTPHeaders = dictWithContentType;
+    request.additionalHTTPHeaders = globalData.headers;
     
     request.userData = [NSNumber numberWithInt: globalData.requestCount++]; 
     

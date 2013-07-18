@@ -403,7 +403,7 @@
 }
 
 // handleEventResults: get the list of returned events from either the name or location search
-- (void) handleEventResults:(UDJResponse*)response{
+- (void)parsePlayerResults:(UDJResponse*)response{
     
     // hide the activity indicator
     searchIndicatorView.hidden = YES;
@@ -439,7 +439,7 @@
     
     if ([request isGET]) {
         // TODO: change isNearbySearch accordingly
-        [self handleEventResults:response];        
+        [self parsePlayerResults:response];        
     }
     
     else if([request isPUT]){
