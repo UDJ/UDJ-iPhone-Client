@@ -30,9 +30,14 @@
 @property(nonatomic,strong) NSString* name;
 @property(nonatomic) double latitude;
 @property(nonatomic) double longitude;
+// location dictionary has: latitude, longitude, address, locality, region, postal_code, country
 @property(nonatomic,strong) NSDictionary* locationDict;
 @property(nonatomic) BOOL hasPassword;
-
+@property(nonatomic,strong) NSString* sortingAlgo;
+@property(nonatomic) NSInteger numActiveUsers;
+@property(nonatomic) NSInteger sizeLimit;
+@property(nonatomic,strong) NSString* state; // player state (not US state)
+@property(nonatomic) NSInteger volume;
 @property(nonatomic,strong) UDJUser* owner;
 
 @end

@@ -26,13 +26,20 @@
 @synthesize owner;
 
 + (UDJPlayer*) playerFromDictionary:(NSDictionary *)playerDict{
-    UDJPlayer* player = [UDJPlayer new];
+    UDJPlayer* player = [[UDJPlayer alloc] init];
     player.name = [playerDict objectForKey:@"name"];
     player.playerID = [playerDict objectForKey:@"id"];
+    // !!!: since we're not currently making use of the other values of location (address, locality, etc.),
+    // I'm leaving this dictionary here instead of making new properties
     player.locationDict = [playerDict objectForKey:@"location"];
     player.latitude = [[player.locationDict objectForKey: @"latitude"] doubleValue];
     player.longitude = [[player.locationDict objectForKey: @"longitude"] doubleValue];
     player.hasPassword = [[playerDict objectForKey:@"has_password"] boolValue];
+    player.sortingAlgo = [playerDict objectForKey:@"sorting_algo"];
+    player.numActiveUsers = [[playerDict objectForKey:@"num_active_users"] intValue];
+    player.sizeLimit = [[playerDict objectForKey:@"size_limit"] intValue];
+    player.state = [playerDict objectForKey:@"state"];
+    player.volume = [[playerDict objectForKey:@"volume"] intValue];
     
     NSDictionary* ownerDict = [playerDict objectForKey:@"owner"];
     player.owner = [UDJUser userFromDict: ownerDict];
