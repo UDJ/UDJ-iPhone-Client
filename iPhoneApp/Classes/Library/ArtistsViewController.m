@@ -285,12 +285,6 @@ typedef enum{
         [self handleArtistResponse: response];        
     }
     
-    // upvote if the song is already on the playlist
-    else if(response.statusCode == 409){
-        NSString* songID = (NSString*)[request userData];
-        [[UDJPlaylist sharedUDJPlaylist] sendVoteRequest:YES songId: songID];
-    }
-    
     // Check if the ticket expired or if the user was kicked from the player
     if(response.statusCode == 401){
         NSString* authenticate = [headerDict objectForKey: @"WWW-Authenticate"];

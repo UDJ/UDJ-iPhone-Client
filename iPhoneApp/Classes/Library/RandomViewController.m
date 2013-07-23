@@ -247,13 +247,6 @@ typedef enum{
         [self handleSearchResults: response];
     }
     
-    // Song conflicts i.e. song we tried to add is already on the playlist
-    else if(response.statusCode == 409){
-        // get the song number, vote up
-        NSString* songID = request.userData;
-        [[UDJPlaylist sharedUDJPlaylist] sendVoteRequest:YES songId: songID];
-    }
-    
     // Check if the ticket expired or if the user was kicked from the player
     if(response.statusCode == 401){
         NSString* authenticate = [headerDict objectForKey: @"WWW-Authenticate"];
