@@ -22,7 +22,8 @@
 // Active Playlist Entry
 @implementation UDJSong
 
-@synthesize librarySongId, title, artist, album, duration, downVoters, upVoters, timeAdded, track, genre, adder;
+@synthesize songID, title, artist, album, duration, downVoters, upVoters, timeAdded, track, genre, adder;
+@synthesize libraryID;
 
 + (id) songFromDictionary:(NSDictionary *)songDict isLibraryEntry:(BOOL)isLibEntry{
     if([songDict count]==0) return nil;
@@ -32,9 +33,10 @@
     NSDictionary* libEntryDict;
     if(isLibEntry) libEntryDict = songDict;
     else libEntryDict = [songDict objectForKey: @"song"];
+    song.libraryID = [libEntryDict objectForKey:@"library_id"];
     
     song.title = [libEntryDict objectForKey:@"title"];
-    song.librarySongId = [libEntryDict objectForKey:@"id"]; // TODO: change this back to intValue?
+    song.songID = [libEntryDict objectForKey:@"id"]; // TODO: change this back to intValue?
     song.artist = [libEntryDict objectForKey:@"artist"];
     song.album = [libEntryDict objectForKey:@"album"];
     song.duration = [[libEntryDict objectForKey:@"duration"] intValue];

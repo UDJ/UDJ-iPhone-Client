@@ -157,7 +157,7 @@ typedef enum{
     UDJSong* song = [resultList songAtIndex:indexPath.row];
     cell.songLabel.text = song.title;
     cell.artistLabel.text = song.artist;
-    cell.librarySongId = song.librarySongId;
+    cell.librarySongId = song.songID;
     cell.addButton.titleLabel.text = song.title;
     
     [cell.addButton addTarget:self action:@selector(addButtonClick:)   

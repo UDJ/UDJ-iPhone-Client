@@ -56,14 +56,12 @@
 }
 
 
--(void)sendVoteRequest:(BOOL)up songId:(NSString*)songId{
+-(void)sendVoteRequest:(BOOL)up forSong:(UDJSong *)song{
     UDJClient* client = [UDJClient sharedClient];
-    
-    NSLog(@"ID: %@", songId);
-    
+
     //create url [POST] players/player_id/active_playlist/lib_id/upvote
     NSString* urlString = client.baseURLString;
-    urlString = [urlString stringByAppendingFormat:@"/players/%@/active_playlist/songs/%@/", playerID, songId, nil];
+    urlString = [urlString stringByAppendingFormat:@"/players/%@/active_playlist/songs/%@/%@/", playerID, song.libraryID, song.songID, nil];
     if(up) urlString = [urlString stringByAppendingString:@"upvote"];
     else urlString = [urlString stringByAppendingString:@"downvote"];
     

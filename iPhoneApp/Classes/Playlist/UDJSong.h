@@ -32,7 +32,8 @@
 
 + (id)songFromDictionary:(NSDictionary*)songDict isLibraryEntry:(BOOL)isLibEntry;
 
-@property(nonatomic,strong) NSString* librarySongId;
+@property(nonatomic,strong) NSString* libraryID;
+@property(nonatomic,strong) NSString* songID;
 @property(nonatomic,strong) NSString* title;
 @property(nonatomic,strong) NSString* artist;
 @property(nonatomic,strong) NSString* album;

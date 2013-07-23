@@ -29,10 +29,6 @@
     UDJPlayer* currentPlayer; // the event id the client is logged in/trying to connect to
     
     UDJUserData* globalData;
-    
-    UIViewController* getEventsDelegate; // this will be the EventSearchViewController
-    UIViewController* enterEventDelegate; // this will be the EventResultsViewController
-    UIViewController* leaveEventDelegate; // PlaylistViewController
 }
 
 + (UDJPlayerData*)sharedPlayerData;
@@ -48,7 +44,7 @@
 @property(nonatomic,strong) UDJPlayer* currentPlayer;
 @property(nonatomic,strong) LocationManager* locationManager;
 @property(nonatomic,strong) UDJUserData* globalData;
-@property(nonatomic,strong) id<UDJRequestDelegate> playerListDelegate;
-@property(nonatomic,strong) UIViewController* leaveEventDelegate;
+@property(nonatomic,strong) UIViewController<UDJRequestDelegate>* playerListDelegate;
+@property(nonatomic,strong) UIViewController<UDJRequestDelegate>* leaveEventDelegate;
 
 @end

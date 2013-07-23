@@ -167,7 +167,7 @@ static PlaylistViewController* _sharedPlaylistViewController;
         
         // send the vote request
         self.currentRequestNumber = [NSNumber numberWithInt: globalData.requestCount];
-        [playlist sendVoteRequest:up songId:selectedSong.librarySongId];
+        [playlist sendVoteRequest:up songId:selectedSong.songID];
         
         [self showVoteNotification:up];
     }

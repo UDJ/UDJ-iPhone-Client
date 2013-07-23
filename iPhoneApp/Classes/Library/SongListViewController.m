@@ -169,7 +169,7 @@ typedef enum{
     cell.songLabel.text = song.title;
     cell.artistLabel.text = song.artist;
     cell.addButton.titleLabel.text = song.title;
-    cell.librarySongId = song.librarySongId;
+    cell.librarySongId = song.songID;
     
     [cell.addButton addTarget:self action:@selector(addButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
