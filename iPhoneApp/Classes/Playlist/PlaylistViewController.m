@@ -233,7 +233,8 @@ static PlaylistViewController* _sharedPlaylistViewController;
     
     [self initNavBar];
     
-    
+    // hide extra cells in table view
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 

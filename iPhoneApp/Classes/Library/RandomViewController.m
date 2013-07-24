@@ -68,6 +68,9 @@ typedef enum{
     MAX_RESULTS = 50;
     
     [self sendRandomSongRequest];
+    
+    // hide extra cells in table view
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 - (void)viewDidUnload

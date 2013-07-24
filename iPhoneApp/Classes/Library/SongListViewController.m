@@ -66,6 +66,9 @@ typedef enum{
     
     // tell UDJData that this is the songAddDelegate
     [UDJUserData sharedUDJData].songAddDelegate = self;
+    
+    // hide extra table view cells
+    self.songTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 - (void)viewDidUnload

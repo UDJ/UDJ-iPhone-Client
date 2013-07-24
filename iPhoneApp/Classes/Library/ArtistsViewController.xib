@@ -320,7 +320,7 @@
 					<string key="className">ArtistsViewController</string>
 					<string key="superclassName">PullRefreshTableViewController</string>
 					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="globalData">UDJData</string>
+						<string key="globalData">UDJUserData</string>
 						<string key="searchBar">UISearchBar</string>
 						<string key="searchIndicatorView">UIActivityIndicatorView</string>
 						<string key="statusLabel">UILabel</string>
@@ -328,7 +328,7 @@
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="globalData">
 							<string key="name">globalData</string>
-							<string key="candidateClassName">UDJData</string>
+							<string key="candidateClassName">UDJUserData</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="searchBar">
 							<string key="name">searchBar</string>
@@ -368,11 +368,11 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">UDJData</string>
+					<string key="className">UDJUserData</string>
 					<string key="superclassName">NSObject</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/UDJData.h</string>
+						<string key="minorKey">./Classes/UDJUserData.h</string>
 					</object>
 				</object>
 			</array>

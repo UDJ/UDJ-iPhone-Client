@@ -70,6 +70,9 @@ typedef enum{
     searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
     
     [self initNavBar];
+    
+    // hide extra cells in table view
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 - (void)viewDidUnload
