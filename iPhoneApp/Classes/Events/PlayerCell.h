@@ -22,7 +22,7 @@
 @interface PlayerCell : UITableViewCell
 
 @property(nonatomic,strong) UIImageView* cellImageView;
-@property(nonatomic,strong) UILabel* eventNameLabel;
+@property(nonatomic,strong) UILabel* playerNameLabel;
 @property(nonatomic,strong) UIView* containerView;
 
 @end

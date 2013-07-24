@@ -113,31 +113,25 @@ typedef enum{
     }];
 }
 
--(void)sendAddSongRequest:(NSString*)librarySongId playerID:(NSString*)playerID{
+-(void)sendAddRequestForSong:(UDJSong*)song playerID:(NSString*)playerID{
     UDJClient* client = [UDJClient sharedClient];
     
     //create url [PUT] /udj/events/event_id/active_playlist/songs
-    NSString* urlString = [NSString stringWithFormat: @"%@/players/%@/active_playlist/songs/%@", client.baseURLString, playerID, librarySongId, nil];
+    NSString* urlString = [NSString stringWithFormat: @"%@/players/%@/active_playlist/songs/%@/%@", client.baseURLString, playerID, song.libraryID, song.songID, nil];
     
     // create request
     UDJRequest* request = [UDJRequest requestWithURL:[NSURL URLWithString:urlString]];
     request.delegate = self;
     request.method = UDJRequestMethodPUT;
     request.additionalHTTPHeaders = globalData.headers;
-    
-    NSLog(@"URLString: %@", urlString);
-    NSLog(@"sent URL: %@", [UDJClient sharedClient].baseURLString);
-    // remember song number
-    request.userData = librarySongId;
-    
+       
     [request send]; 
-    
 }
 
 -(IBAction)addButtonClick:(id)sender{
     UIButton* button = (UIButton*)sender;
     LibraryEntryCell* parentCell = (LibraryEntryCell*)button.superview.superview;
-    [self sendAddSongRequest: parentCell.librarySongId playerID: [UDJPlayerData sharedPlayerData].currentPlayer.playerID];
+    [self sendAddRequestForSong:parentCell.song playerID: [UDJPlayerData sharedPlayerData].currentPlayer.playerID];
     [self showAddNotification: button.titleLabel.text];
 }
 
@@ -160,7 +154,7 @@ typedef enum{
     UDJSong* song = [resultList songAtIndex:indexPath.row];
     cell.songLabel.text = song.title;
     cell.artistLabel.text = song.artist;
-    cell.librarySongId = song.songID;
+    cell.song = song;
     cell.addButton.titleLabel.text = song.title;
     
     [cell.addButton addTarget:self action:@selector(addButtonClick:)   

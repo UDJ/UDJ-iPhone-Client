@@ -269,11 +269,15 @@
     }
     
     NSInteger row = indexPath.row;
-    UDJPlayer* event = [tableList objectAtIndex: row];
+    UDJPlayer* player = [tableList objectAtIndex: row];
     
-    cell.eventNameLabel.text = event.name;
+    cell.playerNameLabel.text = player.name;
     cell.backgroundColor = [UIColor clearColor];
-    cell.cellImageView.backgroundColor = [UIColor colorWithRed:149 green:207 blue:233 alpha: 0.3];
+    
+    float alpha = [player.state isEqualToString:@"inactive"] ? 0.3 : 1;
+    cell.containerView.alpha = alpha;
+    cell.playerNameLabel.alpha = alpha;
+    
     return cell;
 }
 
@@ -282,23 +286,28 @@
 
 // user selects a cell: attempt to enter that party
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    PlayerCell* cell = (PlayerCell*) [self.tableView cellForRowAtIndexPath: indexPath];
-    cell.cellImageView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:255 alpha: 0.3];
-    
     // get the party and remember the event we are trying to join
     NSInteger index = [indexPath indexAtPosition:1];
     
     // get the event corresponding to that index
     [UDJPlayerData sharedPlayerData].currentPlayer = [[UDJPlayerData sharedPlayerData].currentList objectAtIndex:index];
+    UDJPlayer* player = [UDJPlayerData sharedPlayerData].currentPlayer;
     
     // if we are the owner, we can go right into the player
-    NSString* ownerID = [UDJPlayerData sharedPlayerData].currentPlayer.owner.userID;
-    if([ownerID isEqualToString: globalData.userID]){
+    NSString* ownerID = player.owner.userID;
+    if([player.state isEqualToString:@"inactive"]){
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Player Inactive"
+                                                            message:@"You cannot join this player because it is currently inactive."
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles: nil];
+        [alertView show];
+    }
+    else if([ownerID isEqualToString: globalData.userID]){
         [self joinEvent];
     }
     // there's a password: go the password screen
-    else if([UDJPlayerData sharedPlayerData].currentPlayer.hasPassword){
+    else if(player.hasPassword){
         UIAlertView* passwordAlertView = [[UIAlertView alloc] initWithTitle:@"Password Required" message:@"This player requires a password." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Enter", nil];
         passwordAlertView.alertViewStyle = UIAlertViewStyleSecureTextInput;
         [passwordAlertView textFieldAtIndex:0].placeholder = @"Password";
@@ -438,7 +447,6 @@
     if(![requestNumber isEqualToNumber: currentRequestNumber]) return;
     
     if ([request isGET]) {
-        // TODO: change isNearbySearch accordingly
         [self parsePlayerResults:response];        
     }
     

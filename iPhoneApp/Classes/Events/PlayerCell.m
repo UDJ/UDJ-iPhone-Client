@@ -25,7 +25,7 @@
 
 @implementation PlayerCell
 
-@synthesize cellImageView, eventNameLabel;
+@synthesize cellImageView, playerNameLabel;
 @synthesize containerView;
 
 - (void)layoutSubviews {
@@ -36,7 +36,7 @@
     CGRect frame;
     
     frame = CGRectMake(boundsX+15, boundsY+PCELL_VERTICAL_PADDING, 250, containerView.frame.size.height);
-    eventNameLabel.frame = frame;
+    playerNameLabel.frame = frame;
     
     
     
@@ -64,27 +64,13 @@
         [containerView.layer setShadowOpacity:0.8];
         [containerView.layer setShadowRadius:5];
         
-        eventNameLabel = [[UILabel alloc] init];
-        eventNameLabel.font = [UIFont fontWithName:@"Helvetica" size:22];
-        eventNameLabel.textColor = [UIColor whiteColor];
-        eventNameLabel.backgroundColor = [UIColor clearColor];
-        [self.contentView addSubview: eventNameLabel];
+        playerNameLabel = [[UILabel alloc] init];
+        playerNameLabel.font = [UIFont fontWithName:@"Helvetica" size:22];
+        playerNameLabel.textColor = [UIColor whiteColor];
+        playerNameLabel.backgroundColor = [UIColor clearColor];
+        [self.contentView addSubview: playerNameLabel];
     }
     return self;
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-    if(selected){
-        UIColor* containerColor = [UIColor colorWithRed:0.0/255.0 green:73.0/255.0 blue:128.0/255.0 alpha:0.85];
-        [containerView setBackgroundColor:containerColor];
-    }
-    else{
-        UIColor* containerColor = [UIColor colorWithRed:72.0/255.0 green:147.0/255.0 blue:203.0/255.0 alpha:0.85];
-        [containerView setBackgroundColor:containerColor];
-    }
-    
 }
 
 @end

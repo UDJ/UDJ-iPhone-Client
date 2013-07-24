@@ -22,7 +22,8 @@
 
 @implementation LibraryEntryCell
 
-@synthesize songLabel, artistLabel, addButton, librarySongId;
+@synthesize songLabel, artistLabel, addButton;
+@synthesize song;
 
 - (void)layoutSubviews {
     [super layoutSubviews];
