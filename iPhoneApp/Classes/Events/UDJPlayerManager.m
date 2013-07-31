@@ -449,7 +449,6 @@ static UDJPlayerManager* _sharedPlayerManager = nil;
 
 -(void)playPlaylistCurrentSong{
 
-    NSLog(@"Trying to play current song");
     // find the mediaItem for the current song
     NSString* stringID = [UDJPlaylist sharedUDJPlaylist].currentSong.songID;
     UDJLibraryID mediaItemID = strtoull([stringID UTF8String], NULL, 0);

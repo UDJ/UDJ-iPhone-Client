@@ -195,7 +195,11 @@ static PlaylistViewController* _sharedPlaylistViewController;
     [self.tabBarController.navigationItem setTitle:[currentEvent name]];
     
     // override  back button
-    UIBarButtonItem* playersButton = [[UIBarButtonItem alloc] initWithTitle:@"Players" style:UIBarButtonItemStyleBordered target:self action:@selector(backButtonClick:)];
+    UIButton *imageButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    imageButton.frame = CGRectMake(0,0,24,24);
+    [imageButton setImage:[UIImage imageNamed:@"white_back_arrow.png"] forState:UIControlStateNormal];
+    [imageButton addTarget:self action:@selector(backButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *playersButton = [[UIBarButtonItem alloc] initWithCustomView:imageButton];
     [self.tabBarController.navigationItem setLeftBarButtonItem:playersButton];
     
     // Add control button if we're the host
