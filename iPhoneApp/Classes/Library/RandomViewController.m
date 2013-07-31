@@ -56,7 +56,7 @@ typedef enum{
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.tabBarController.navigationController setNavigationBarHidden:NO];
+    [self.tabBarController.navigationController setNavigationBarHidden:YES];
 }
 
 - (void)viewDidLoad
@@ -71,6 +71,8 @@ typedef enum{
     
     // hide extra cells in table view
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    self.navigationController.navigationBarHidden = NO;
 }
 
 - (void)viewDidUnload

@@ -105,9 +105,10 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
     [self.tableView reloadData];
     [self toggleJoiningView: NO];
-    [super viewWillAppear:animated];
     [self.navigationController setToolbarHidden: NO animated:YES];
     [self.navigationItem setTitle:@""];
 }
@@ -115,8 +116,8 @@
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [self.navigationController setToolbarHidden: YES animated:YES];
-    [self.navigationItem setTitle:@"Players"];
 }
+
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear: animated];
