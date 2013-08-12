@@ -45,6 +45,11 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+-(void)initNavBar
+{
+    
+}
+
 - (void)viewDidLoad{
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -66,6 +71,8 @@
     AVAudioSession* session = [AVAudioSession sharedInstance];
     [session setCategory:AVAudioSessionCategoryPlayback error:nil];
     [session setActive:YES error:nil];
+    
+    [self initNavBar];
 }
 
 -(void)viewDidAppear:(BOOL)animated{

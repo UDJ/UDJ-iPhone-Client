@@ -62,8 +62,8 @@
 }
 
 -(void)textFieldDidBeginEditing:(UITextField*)textField{
-    NSInteger yCoord = textField.frame.origin.y;
-    [self.mainScrollView scrollRectToVisible: CGRectMake(0, yCoord+10, 320, 367) animated:YES];
+    float yCoord = textField.frame.origin.y;
+    [self.mainScrollView setContentOffset:CGPointMake(0, yCoord - 5) animated:YES];
     self.cancelButton.hidden = NO;
     self.mainScrollView.scrollEnabled = YES;
     self.selectedFieldIndex = textField.tag;
@@ -79,6 +79,7 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     if(textField.tag == 4){
+        [self.mainScrollView setContentOffset:CGPointMake(0, textField.frame.origin.y - 5) animated:YES];
         [self forceKeyboardHide];
         [self toggleStatePicker: YES];
         return NO;
@@ -122,6 +123,14 @@
     }
     
     return NO;
+}
+
+-(IBAction)useLocationValueChanged:(id)sender{
+    UISwitch *locationSwitch = (UISwitch*)sender;
+    for(UITextField *textField in self.locationFields){
+        textField.alpha = [locationSwitch isOn] ? 1 : 0.5;
+        textField.enabled = [locationSwitch isOn];
+    }
 }
 
 #pragma mark - State (location) picker
@@ -181,7 +190,7 @@
     [self.statePickerView setFrame: CGRectMake(0, 480, 320, 260)];
     [self.view addSubview: self.statePickerView];
     
-    [self.mainScrollView setContentSize: CGSizeMake(320, 630)]; // 320, 367
+    [self.mainScrollView setContentSize: CGSizeMake(320, 660)]; // 320, 367
     [self.mainScrollView scrollRectToVisible: CGRectMake(0, 8, 320, 367) animated:YES];
     self.mainScrollView.scrollEnabled = NO;
     
@@ -276,13 +285,21 @@
 
 #pragma mark - Player methods helpers
 
--(BOOL)completedRequiredFields{
+-(BOOL)completedLocationFields{
     BOOL complete = YES;
     for(int i=0; i < [locationFields count]; i++){
         UITextField* textField = [locationFields objectAtIndex: i];
         NSString* textWithoutSpaces = [textField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
-        if([textWithoutSpaces isEqualToString:@""]) complete = NO;
+        if([textWithoutSpaces isEqualToString:@""]){
+            complete = NO;
+        }
     }
+    
+    return complete;
+}
+
+-(BOOL)completedNameField{
+    BOOL complete = YES;
     
     NSString* textWithoutSpaces = [self.playerNameField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
     if([textWithoutSpaces isEqualToString:@""]) complete = NO;
@@ -322,7 +339,7 @@
 
 
 -(IBAction)createButtonClick:(id)sender{
-    if([self completedRequiredFields] && [[playerNameField text] length] > 0){
+    if([self.useLocationSwitch isOn] && [self completedLocationFields] && [self completedNameField]){
         [self sendCreatePlayerRequest];
         self.createPlayerButton.hidden = YES;
         
@@ -337,8 +354,20 @@
         [self.activityLabel setText: @"Creating player"];
         [self toggleActivityView: YES];
     }
-    else{
+    else if([self.useLocationSwitch isOn] && ![self completedLocationFields] && ![self completedNameField]){
         UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Missing Info" message:@"You must choose a name for your player and fill out all address fields." delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alertView show];
+    }
+    else if([self.useLocationSwitch isOn] && [self completedLocationFields] && ![self completedNameField]){
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Missing Player Name" message:@"You must choose a name for your player." delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alertView show];
+    }
+    else if(![self.useLocationSwitch isOn] && ![self completedNameField]){
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Missing Player Name" message:@"You must choose a name for your player." delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alertView show];
+    }
+    else if([self.useLocationSwitch isOn] && ![self completedLocationFields] && [self completedNameField]){
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Missing Address" message:@"You must fill out all address fields." delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [alertView show];
     }
 }
