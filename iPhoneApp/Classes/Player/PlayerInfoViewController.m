@@ -314,14 +314,17 @@
     if(![self.playerPasswordField.text isEqualToString:@""])
         [dict setValue:self.playerPasswordField.text forKey:@"password"];
     
-    // create location dictionary
-    NSMutableDictionary* locationDict = [[NSMutableDictionary alloc] initWithCapacity: 4];
-    [locationDict setValue:self.addressField.text forKey:@"address"];
-    [locationDict setValue:self.cityField.text forKey:@"locality"];
-    [locationDict setValue:self.stateField.text forKey:@"region"];
-    [locationDict setValue:self.zipCodeField.text forKey:@"postal_code"];
-    [locationDict setValue: @"United States" forKey:@"country"];
-    [dict setObject: locationDict forKey: @"location"];
+    // Location dictionary is optional
+    if([self completedLocationFields])
+    {
+        NSMutableDictionary* locationDict = [[NSMutableDictionary alloc] initWithCapacity: 4];
+        [locationDict setValue:self.addressField.text forKey:@"address"];
+        [locationDict setValue:self.cityField.text forKey:@"locality"];
+        [locationDict setValue:self.stateField.text forKey:@"region"];
+        [locationDict setValue:self.zipCodeField.text forKey:@"postal_code"];
+        [locationDict setValue: @"United States" forKey:@"country"];
+        [dict setObject: locationDict forKey: @"location"];
+    }
     
     return [dict JSONString];
 }
@@ -339,7 +342,7 @@
 
 
 -(IBAction)createButtonClick:(id)sender{
-    if([self.useLocationSwitch isOn] && [self completedLocationFields] && [self completedNameField]){
+    if([self completedNameField] && (![self.useLocationSwitch isOn] || ([self.useLocationSwitch isOn] && [self completedLocationFields]))){
         [self sendCreatePlayerRequest];
         self.createPlayerButton.hidden = YES;
         
@@ -370,6 +373,7 @@
         UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Missing Address" message:@"You must fill out all address fields." delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [alertView show];
     }
+    NSLog(@"didnt trigger");
 }
 
 -(void)sendCreatePlayerRequest{
