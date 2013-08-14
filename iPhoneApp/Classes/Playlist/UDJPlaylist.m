@@ -127,7 +127,7 @@
 }
 
 -(void)request:(UDJRequest*)request didLoadResponse:(UDJResponse*)response{
-    NSLog(@"Playlist response code: %d, request url %@", [response statusCode], [request.URL absoluteString]);
+    //NSLog(@"Playlist response code: %d, request url %@", [response statusCode], [request.URL absoluteString]);
     if ([request isGET]) {
         [self handlePlaylistResponse:response];        
     }

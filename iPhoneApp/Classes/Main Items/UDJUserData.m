@@ -123,7 +123,7 @@
     NSDictionary* responseHeaders = request.additionalHTTPHeaders;
     NSString* responseDelegate = [responseHeaders objectForKey: @"delegate"];
     
-     NSLog(@"Global Data %d, URL %@", [response statusCode], [request.URL absoluteString]);
+    NSLog(@"Global Data %d, URL %@", [response statusCode], [request.URL absoluteString]);
     
     /*if([responseDelegate isEqualToString: @"participantDelegate"] && participantDelegate != nil){
         [participantDelegate request:request didLoadResponse:response];

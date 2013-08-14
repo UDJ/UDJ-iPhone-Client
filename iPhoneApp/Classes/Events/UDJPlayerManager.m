@@ -320,7 +320,7 @@ static UDJPlayerManager* _sharedPlayerManager = nil;
     UDJClient* client = [UDJClient sharedClient];
     
     NSString* urlString = client.baseURLString;
-    urlString = [urlString stringByAppendingFormat:@"/players/%@/state", self.playerID, nil];
+    urlString = [urlString stringByAppendingFormat:@"/players/%@", self.playerID, nil];
     
     // create request
     UDJRequest* request = [UDJRequest requestWithURL:[NSURL URLWithString:urlString]];
@@ -330,12 +330,13 @@ static UDJPlayerManager* _sharedPlayerManager = nil;
     
     // set up the headers, including which type of request this is
     NSMutableDictionary* requestHeaders = [NSMutableDictionary dictionaryWithDictionary: globalData.headers];
+    [requestHeaders setValue:@"text/json" forKey:@"content-type"];
     [requestHeaders setValue:@"playerMethodsDelegate" forKey:@"delegate"];
     request.additionalHTTPHeaders = requestHeaders;
     
     // include state parameter
-    NSArray* stateArray = [NSArray arrayWithObjects:@"inactive", @"playing", @"paused", nil];
-    request.params = [NSDictionary dictionaryWithObjectsAndKeys: [stateArray objectAtIndex: newState], @"state", nil];
+    NSArray* stateArray = [NSArray arrayWithObjects:@"inactive", @"play", @"pause", nil];
+    request.HTTPBodyString = [[NSDictionary dictionaryWithObjectsAndKeys: [stateArray objectAtIndex: newState], @"state", nil] JSONString];
     
     //send request
     [request send];
@@ -586,7 +587,6 @@ static UDJPlayerManager* _sharedPlayerManager = nil;
 - (void)request:(UDJRequest*)request didLoadResponse:(UDJResponse*)response{
     NSString* requestType = [request userData];
     NSLog(@"Player Manager response code: %d, request type %@, URL %@", [response statusCode], requestType, [request.URL absoluteString]);
-    NSLog(@"%@",[response bodyAsString]);
 }
 
 
