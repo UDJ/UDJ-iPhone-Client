@@ -320,7 +320,7 @@ static UDJPlayerManager* _sharedPlayerManager = nil;
     UDJClient* client = [UDJClient sharedClient];
     
     NSString* urlString = client.baseURLString;
-    urlString = [urlString stringByAppendingFormat:@"/players/%@", self.playerID, nil];
+    urlString = [urlString stringByAppendingFormat:@"/players/%@/state", self.playerID, nil];
     
     // create request
     UDJRequest* request = [UDJRequest requestWithURL:[NSURL URLWithString:urlString]];
