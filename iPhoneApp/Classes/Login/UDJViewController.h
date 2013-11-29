@@ -21,8 +21,8 @@
 #import "UDJUserData.h"
 #import "UDJStoredData.h"
 #import <QuartzCore/QuartzCore.h>
-
-@interface UDJViewController : UIViewController <UDJRequestDelegate, UIAlertViewDelegate> {
+#import <FacebookSDK/FacebookSDK.h>
+@interface UDJViewController : UIViewController <UDJRequestDelegate, UIAlertViewDelegate, FBLoginViewDelegate> {
 
 	
     UIButton *loginButton;

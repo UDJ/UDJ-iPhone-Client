@@ -264,20 +264,22 @@
 {
     static NSString *CellIdentifier = @"Cell";
     
-    PlayerCell *cell = [TableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = [TableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[PlayerCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.textLabel.font = [UIFont fontWithName:@"AppleSDGothicNeo-Thin" size:24];
+        cell.textLabel.textColor = [UIColor whiteColor];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
     NSInteger row = indexPath.row;
     UDJPlayer* player = [tableList objectAtIndex: row];
     
-    cell.playerNameLabel.text = player.name;
+    cell.textLabel.text = player.name;
     cell.backgroundColor = [UIColor clearColor];
     
     float alpha = [player.state isEqualToString:@"inactive"] ? 0.3 : 1;
-    cell.containerView.alpha = alpha;
-    cell.playerNameLabel.alpha = alpha;
+    cell.textLabel.alpha = alpha;
     
     return cell;
 }

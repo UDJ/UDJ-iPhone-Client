@@ -19,3 +19,4 @@
 +(UDJClient*)sharedClient;
 
 @end
+    

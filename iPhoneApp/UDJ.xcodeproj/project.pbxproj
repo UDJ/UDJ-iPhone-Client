@@ -13,9 +13,10 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		2899E5220DE3E06400AC0155 /* UDJViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* UDJViewController.xib */; };
-		28D7ACF80DDB3853001CB0EB /* UDJViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* UDJViewController.m */; };
 		A3028B861564A2AE00EF6EE8 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3028B841564A2AE00EF6EE8 /* MainTabBarController.m */; };
 		A3028B871564A2AE00EF6EE8 /* MainTabBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3028B851564A2AE00EF6EE8 /* MainTabBarController.xib */; };
+		A30B5B3A17C3F80C004B9400 /* UDJFBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A30B5B3817C3F80C004B9400 /* UDJFBViewController.m */; };
+		A30B5B3B17C3F80C004B9400 /* UDJFBViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A30B5B3917C3F80C004B9400 /* UDJFBViewController.xib */; };
 		A30C4BE01687BD26004D22DA /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A30C4BDF1687BD26004D22DA /* Default-568h@2x.png */; };
 		A30CE22C1591695800DA054D /* backg.png in Resources */ = {isa = PBXBuildFile; fileRef = A30CE22B1591695800DA054D /* backg.png */; };
 		A30CE22E15916C0500DA054D /* underline.png in Resources */ = {isa = PBXBuildFile; fileRef = A30CE22D15916C0500DA054D /* underline.png */; };
@@ -88,7 +89,10 @@
 		A39AF6921497D081006ADF19 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A39AF6911497D081006ADF19 /* MobileCoreServices.framework */; };
 		A39AF6941497D09A006ADF19 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A39AF6931497D09A006ADF19 /* SystemConfiguration.framework */; };
 		A3A2B370156DD6C600C4FF90 /* UDJStoredData.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A2B36F156DD6C600C4FF90 /* UDJStoredData.m */; };
+		A3A5CB1117BEE8BE002D25DD /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3BB5DCE17BDF2C000171679 /* FacebookSDK.framework */; };
 		A3B1ABB8157E759B008498EC /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3B1ABB7157E759B008498EC /* MainWindow.xib */; };
+		A3BB5DD517BDF57300171679 /* UDJ.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BB5DD417BDF57300171679 /* UDJ.m */; };
+		A3BB5DDC17BE9B3D00171679 /* UDJViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* UDJViewController.m */; };
 		A3C22D551566D4D50066B9F8 /* playlisticon.png in Resources */ = {isa = PBXBuildFile; fileRef = A3C22D541566D4D50066B9F8 /* playlisticon.png */; };
 		A3C22D571566D62E0066B9F8 /* libraryicon.png in Resources */ = {isa = PBXBuildFile; fileRef = A3C22D561566D62E0066B9F8 /* libraryicon.png */; };
 		A3C22D591566D8510066B9F8 /* randomicon.png in Resources */ = {isa = PBXBuildFile; fileRef = A3C22D581566D8510066B9F8 /* randomicon.png */; };
@@ -136,6 +140,9 @@
 		A3028B831564A2AE00EF6EE8 /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
 		A3028B841564A2AE00EF6EE8 /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
 		A3028B851564A2AE00EF6EE8 /* MainTabBarController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainTabBarController.xib; path = "../Classes/Main Views/MainTabBarController.xib"; sourceTree = "<group>"; };
+		A30B5B3717C3F80C004B9400 /* UDJFBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UDJFBViewController.h; sourceTree = "<group>"; };
+		A30B5B3817C3F80C004B9400 /* UDJFBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UDJFBViewController.m; sourceTree = "<group>"; };
+		A30B5B3917C3F80C004B9400 /* UDJFBViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UDJFBViewController.xib; sourceTree = "<group>"; };
 		A30C4BDF1687BD26004D22DA /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		A30CE22B1591695800DA054D /* backg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backg.png; sourceTree = "<group>"; };
 		A30CE22D15916C0500DA054D /* underline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = underline.png; sourceTree = "<group>"; };
@@ -242,6 +249,9 @@
 		A3A2B36E156DD6C600C4FF90 /* UDJStoredData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UDJStoredData.h; path = ../UDJStoredData.h; sourceTree = "<group>"; };
 		A3A2B36F156DD6C600C4FF90 /* UDJStoredData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UDJStoredData.m; path = ../UDJStoredData.m; sourceTree = "<group>"; };
 		A3B1ABB7157E759B008498EC /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		A3BB5DCE17BDF2C000171679 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		A3BB5DD317BDF57300171679 /* UDJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UDJ.h; sourceTree = "<group>"; };
+		A3BB5DD417BDF57300171679 /* UDJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UDJ.m; sourceTree = "<group>"; };
 		A3C22D541566D4D50066B9F8 /* playlisticon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playlisticon.png; sourceTree = "<group>"; };
 		A3C22D561566D62E0066B9F8 /* libraryicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = libraryicon.png; sourceTree = "<group>"; };
 		A3C22D581566D8510066B9F8 /* randomicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = randomicon.png; sourceTree = "<group>"; };
@@ -295,6 +305,7 @@
 				A341E23015E2BC9200E92D84 /* CoreMedia.framework in Frameworks */,
 				A341E22E15E2B45300E92D84 /* AVFoundation.framework in Frameworks */,
 				A38DC7C715C496CF00BF9A68 /* MediaPlayer.framework in Frameworks */,
+				A3A5CB1117BEE8BE002D25DD /* FacebookSDK.framework in Frameworks */,
 				A3E4D185157457260032CF8B /* Twitter.framework in Frameworks */,
 				A3E4D1831574570A0032CF8B /* MessageUI.framework in Frameworks */,
 				A35F57F61572D477004AA5DB /* QuartzCore.framework in Frameworks */,
@@ -386,6 +397,8 @@
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
+				A3BB5DD317BDF57300171679 /* UDJ.h */,
+				A3BB5DD417BDF57300171679 /* UDJ.m */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -458,6 +471,9 @@
 		A354F04014A2CA5A00F3AAEF /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				A30B5B3717C3F80C004B9400 /* UDJFBViewController.h */,
+				A30B5B3817C3F80C004B9400 /* UDJFBViewController.m */,
+				A30B5B3917C3F80C004B9400 /* UDJFBViewController.xib */,
 				28D7ACF60DDB3853001CB0EB /* UDJViewController.h */,
 				28D7ACF70DDB3853001CB0EB /* UDJViewController.m */,
 				2899E5210DE3E06400AC0155 /* UDJViewController.xib */,
@@ -475,6 +491,7 @@
 		A35F57F71572D47C004AA5DB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A3BB5DCE17BDF2C000171679 /* FacebookSDK.framework */,
 				A3E4D184157457260032CF8B /* Twitter.framework */,
 				A3E4D1821574570A0032CF8B /* MessageUI.framework */,
 				A35F57F51572D477004AA5DB /* QuartzCore.framework */,
@@ -730,6 +747,7 @@
 				A3907C62177A7BF6000B1A48 /* RegisterViewController.xib in Resources */,
 				A3907C64177A8172000B1A48 /* white_back_arrow.png in Resources */,
 				A36F915917962CC70036B6C0 /* addbutton.png in Resources */,
+				A30B5B3B17C3F80C004B9400 /* UDJFBViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -740,10 +758,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3BB5DDC17BE9B3D00171679 /* UDJViewController.m in Sources */,
 				A36170A916A395000032505C /* JSONKit.m in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* UDJAppDelegate.m in Sources */,
-				28D7ACF80DDB3853001CB0EB /* UDJViewController.m in Sources */,
 				A33C4614148F0707009C1BC6 /* PlaylistViewController.m in Sources */,
 				A374BE0114A2EF36001A0DE0 /* UDJPlayerData.m in Sources */,
 				A3536FB314A5218F00B5C95F /* UDJPlayer.m in Sources */,
@@ -787,6 +805,8 @@
 				A3977E91169F908E0095056E /* AFXMLRequestOperation.m in Sources */,
 				A3977E92169F908E0095056E /* UIImageView+AFNetworking.m in Sources */,
 				A3907C61177A7BF6000B1A48 /* RegisterViewController.m in Sources */,
+				A3BB5DD517BDF57300171679 /* UDJ.m in Sources */,
+				A30B5B3A17C3F80C004B9400 /* UDJFBViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -800,6 +820,11 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/../../../Documents/FacebookSDK\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -837,6 +862,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/../../../Documents/FacebookSDK\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = UDJ_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -892,6 +922,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/../../../Documents/FacebookSDK\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = UDJ_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;

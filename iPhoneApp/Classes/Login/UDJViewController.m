@@ -25,6 +25,8 @@
 #import "PlayerListViewController.h"
 #import "JSONKit.h"
 #import "RegisterViewController.h"
+#import "UDJFBViewController.h"
+
 
 
 @implementation UDJViewController
@@ -41,10 +43,23 @@
     }
 }
 
+- (IBAction)performLogin:(id)sender
+{    
+    UDJAppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
+    [appDelegate openSession];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 	[self.navigationController setNavigationBarHidden:YES];
     globalData = [UDJUserData sharedUDJData];
+    
+    // add facebook button
+    FBLoginView *fbLoginView = [[FBLoginView alloc] init];
+    fbLoginView.delegate = self;
+    fbLoginView.readPermissions = @[@"basic_info", @"email"];
+    fbLoginView.frame = CGRectMake(20, 200, 280, 46);
+    [self.view addSubview:fbLoginView];
     
     // initialize login view
     loginBackgroundView.hidden = YES;
@@ -60,8 +75,25 @@
     
     UDJAppDelegate* appDelegate = (UDJAppDelegate*)[[UIApplication sharedApplication] delegate];
     managedObjectContext = appDelegate.managedObjectContext;
-    
+  
     [self checkForUsername];
+}
+
+#pragma mark - Facebook login
+
+-(void)loginViewShowingLoggedInUser:(FBLoginView *)loginView {
+    NSLog(@"FB Logged in");
+}
+
+-(void)loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user {
+    NSLog(@"FB Logged fetched user info");
+    NSString *facebookID = [user id];
+    NSString *accessToken = [[FBSession.activeSession accessTokenData] accessToken];
+    [self sendFBAuthRequest:facebookID token: accessToken];
+}
+
+-(void)loginView:(FBLoginView *)loginView handleError:(NSError *)error {
+    NSLog(@"FB Error");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -76,13 +108,37 @@
 	// e.g. self.myOutlet = nil;
 }
 
+- (void)loginFailed{
+    // TODO: what is supposed to be here?
+}
+
 // Show or hide the "logging in.." view; active = YES will show the view
--(void) toggleLoginView:(BOOL) active{
+-(void) toggleLoginView:(BOOL) active
+{
     loginBackgroundView.hidden = !active;
     loginButton.enabled = !active;
     registerButton.enabled = !active;
     usernameField.enabled = !active;
     passwordField.enabled = !active;
+}
+- (void)showLoginView
+{
+    UIViewController *topViewController = [self.navigationController topViewController];
+    UIViewController *modalViewController = [topViewController modalViewController];
+    
+    // If the login screen is not already displayed, display it. If the login screen is
+    // displayed, then getting back here means the login in progress did not successfully
+    // complete. In that case, notify the login view so it can update its UI appropriately.
+    if (![modalViewController isKindOfClass:[UDJViewController class]]) {
+        UDJViewController* loginViewController = [[UDJViewController alloc]
+                                                      initWithNibName:@"UDJViewController"
+                                                      bundle:nil];
+        [topViewController presentModalViewController:loginViewController animated:NO];
+    } else {
+        UDJViewController* loginViewController =
+        (UDJViewController*)modalViewController;
+        [loginViewController loginFailed];
+    }
 }
 
 
@@ -161,6 +217,33 @@
 
 
 #pragma mark Authenticate methods
+
+-(void)sendFBAuthRequest:(NSString*)facebookID token:(NSString*)token{
+    UDJClient* client = [UDJClient sharedClient];
+    NSDictionary* nameAndToken = [NSDictionary dictionaryWithObjectsAndKeys:facebookID, @"user_id", token, @"access_token", nil];
+    NSString* jsonString = [nameAndToken JSONString];
+    
+    // put the API version in the header
+    NSDictionary* headers = [NSDictionary dictionaryWithObjectsAndKeys:@"0.7", @"X-Udj-Api-Version", @"text/json", @"content-type", nil];
+    
+    // create the URL
+    NSMutableString* urlString = [NSMutableString stringWithString:client.baseURLString];
+    [urlString appendString: @"/fb_auth"];
+    
+    // set up request
+    UDJRequest* request = [UDJRequest requestWithURL:[NSURL URLWithString:urlString]];
+    request.delegate = self;
+    request.HTTPBodyString = jsonString;
+    request.method = UDJRequestMethodPOST;
+    request.userData = [NSNumber numberWithInt: globalData.requestCount++];
+    request.additionalHTTPHeaders = headers;
+    
+    // remember the request we are waiting on
+    self.currentRequestNumber = request.userData;
+    
+    [self toggleLoginView:YES];
+    [request send];
+}
 
 // authenticate: sends a POST with the username and password
 - (void) sendAuthRequest:(NSString*)username password:(NSString*)pass{

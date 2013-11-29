@@ -41,6 +41,8 @@
 	<array>
 		<string>audio</string>
 	</array>
+	<key>FacebookAppID</key>
+	<string>353577924669947</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

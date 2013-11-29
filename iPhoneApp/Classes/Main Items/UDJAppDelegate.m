@@ -19,12 +19,20 @@
 
 #import "UDJAppDelegate.h"
 #import "UDJViewController.h"
+#import "UDJFBViewController.h"
 #import "UDJPlayer.h"
 #import "UDJPlayerData.h"
 #import "UDJPlaylist.h"
 #import "UDJSongList.h"
 #import "UDJUserData.h"
 #import "UDJClient.h"
+#import <FacebookSDK/FacebookSDK.h>
+
+@interface UDJAppDelegate ()
+
+@property (strong, nonatomic) UINavigationController* navController;
+
+@end
 
 @implementation UDJAppDelegate
 
@@ -33,6 +41,8 @@
 @synthesize baseUrl;
 @synthesize managedObjectModel, managedObjectContext, persistentStoreCoordinator;
 @synthesize playerManager;
+@synthesize navController = _navController;
+@synthesize mainViewController = _mainViewController;
 
 // accessor methods for "data" property
 
@@ -127,8 +137,105 @@
     self.window.rootViewController = self.navigationController;
     [self.window makeKeyAndVisible];
     
-
+    
 }
+- (BOOL)applicationDidFinishLaunchingWithOptions:(UIApplication *)application {
+    // Override point for customization after application launch.
+    
+    //init UDJData
+    UDJUserData* udjData = [[UDJUserData alloc] init];
+    udjData.requestCount = 0;
+    
+    [UDJPlayerData new]; // eventData singleton
+    self.playerManager = [[UDJPlayerManager alloc] init]; // player manager singleton
+    
+    
+    // initialize  UDClient
+    baseUrl = @"https://udjplayer.com:4898/udj/0_7";
+    UDJClient* client = [UDJClient alloc];
+    client = [client initWithBaseURL: [NSURL URLWithString: baseUrl]];
+    client.baseURLString = @"https://udjplayer.com:4898/udj/0_7";;
+    
+    [UDJPlaylist sharedUDJPlaylist].globalData = [UDJUserData sharedUDJData];
+    
+    //create a UDJViewController (the login screen), and make it the root view
+    viewController    = [[UDJViewController alloc] initWithNibName:@"UDJViewController" bundle:[NSBundle mainBundle]];
+    self.mainViewController = [[UDJViewController alloc]
+                               initWithNibName:@"UDJFBViewController" bundle:nil];
+    self.navController = [[UINavigationController alloc]
+                          initWithRootViewController:self.mainViewController];
+    self.window.rootViewController = self.navController;
+    [self.window makeKeyAndVisible];
+    // See if the app has a valid token for the current state.
+    if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
+        // To-do, show logged in view
+    } else {
+        // No, display the login page.
+        [self showLoginView];
+    }
+    return YES;
+}
+
+- (void)sessionStateChanged:(FBSession *)session
+                      state:(FBSessionState) state
+                      error:(NSError *)error
+{
+    switch (state) {
+        case FBSessionStateOpen: {
+            UIViewController *topViewController =
+            [self.navController topViewController];
+            if ([[topViewController modalViewController]
+                 isKindOfClass:[UDJViewController class]]) {
+                [topViewController dismissModalViewControllerAnimated:YES];
+            }
+        }
+            break;
+        case FBSessionStateClosed:
+        case FBSessionStateClosedLoginFailed:
+            // Once the user has logged in, we want them to
+            // be looking at the root view.
+            [self.navController popToRootViewControllerAnimated:NO];
+            
+            [FBSession.activeSession closeAndClearTokenInformation];
+            
+            [self showLoginView];
+            break;
+        default:
+            break;
+    }
+    
+    if (error) {
+        UIAlertView *alertView = [[UIAlertView alloc]
+                                  initWithTitle:@"Error"
+                                  message:error.localizedDescription
+                                  delegate:nil
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
+        [alertView show];
+    }
+}
+
+- (void)openSession
+{
+    [FBSession openActiveSessionWithReadPermissions:nil
+                                       allowLoginUI:YES
+                                  completionHandler:
+     ^(FBSession *session,
+       FBSessionState state, NSError *error) {
+         [self sessionStateChanged:session state:state error:error];
+     }];
+}
+
+- (void)showLoginView
+{
+    UIViewController *topViewController = [self.navController topViewController];
+    
+    UDJViewController* loginViewController =
+    [[UDJViewController alloc]initWithNibName:@"UDJViewController" bundle:nil];
+    [topViewController presentModalViewController:loginViewController animated:NO];
+}
+
+
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {

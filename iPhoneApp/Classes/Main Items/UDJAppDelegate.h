@@ -20,6 +20,7 @@
 #import <UIKit/UIKit.h>
 #import "UDJPlayerManager.h"
 
+
 @class UDJViewController;
 
 @interface UDJAppDelegate : NSObject <UIApplicationDelegate> {
@@ -35,9 +36,9 @@
 
 @property (nonatomic, strong) IBOutlet UIWindow *window;
 @property (nonatomic, strong) IBOutlet UDJViewController *viewController;
+@property (nonatomic, strong) IBOutlet UDJViewController *mainViewController;
 @property (nonatomic, strong) UINavigationController *navigationController;
 @property (nonatomic, strong) NSString* baseUrl;
-
 @property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;  
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;  
 @property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
@@ -46,6 +47,7 @@
 
 - (void) setModelData:(NSString *)modelData;
 - (NSString *) getModelData;
+- (void)openSession;
 
 
 @end
