@@ -267,7 +267,7 @@
     UITableViewCell *cell = [TableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        cell.textLabel.font = [UIFont fontWithName:@"AppleSDGothicNeo-Thin" size:24];
+        cell.textLabel.font = [UIFont fontWithName:@"AppleSDGothicNeo-Light" size:22];
         cell.textLabel.textColor = [UIColor whiteColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
@@ -282,6 +282,10 @@
     cell.textLabel.alpha = alpha;
     
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 0.01f;
 }
 
 
