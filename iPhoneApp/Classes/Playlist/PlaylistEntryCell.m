@@ -45,10 +45,10 @@
     frame = CGRectMake(boundsX+275, 4, 38, 38);
     downVoteButton.frame = frame;
     
-    frame = CGRectMake(boundsX+239, 42, 30, 20);
+    frame = CGRectMake(boundsX+225, 42, 38, 20);
     upVoteLabel.frame = frame;
     
-    frame = CGRectMake(boundsX+289, 42, 30, 20);
+    frame = CGRectMake(boundsX+275, 42, 38, 20);
     downVoteLabel.frame = frame;
     
     frame = CGRectMake(boundsX + 271, 3, 42, 42);
@@ -97,11 +97,11 @@
         upVoteLabel.textColor = [UIColor greenColor];
         upVoteLabel.backgroundColor = [UIColor clearColor];
         upVoteLabel.font = [UIFont fontWithName:@"Helvetica" size:18];
-        upVoteLabel.textAlignment = UITextAlignmentLeft;
+        upVoteLabel.textAlignment = UITextAlignmentCenter;
         downVoteLabel.textColor = [UIColor redColor];
         downVoteLabel.backgroundColor = [UIColor clearColor];
         downVoteLabel.font = [UIFont fontWithName:@"Helvetica" size:18];
-        downVoteLabel.textAlignment = UITextAlignmentLeft;
+        downVoteLabel.textAlignment = UITextAlignmentCenter;
         self.backgroundColor = [UIColor clearColor];
         
         playingImageView = [[UIImageView alloc] initWithImage: [UIImage imageNamed: @"playing.png"]];
