@@ -7,10 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UDJViewController">
             <connections>
-                <outlet property="cancelButton" destination="58" id="70"/>
-                <outlet property="loginBackgroundView" destination="80" id="86"/>
                 <outlet property="loginButton" destination="16" id="17"/>
-                <outlet property="loginView" destination="57" id="66"/>
                 <outlet property="passwordField" destination="15" id="27"/>
                 <outlet property="registerButton" destination="56" id="63"/>
                 <outlet property="usernameField" destination="14" id="26"/>
@@ -68,8 +65,8 @@
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <connections>
-                                <action selector="OnButtonClick:" destination="-1" eventType="editingDidEndOnExit" id="19"/>
-                                <action selector="OnButtonClick:" destination="-1" eventType="touchUpInside" id="20"/>
+                                <action selector="loginClick:" destination="-1" eventType="touchUpInside" id="Hxe-Yc-xtx"/>
+                                <action selector="loginClick:" destination="-1" eventType="editingDidEndOnExit" id="lo4-d6-R4z"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="56">
@@ -89,51 +86,15 @@
                             </connections>
                         </button>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Don't have an account?" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="8" adjustsFontSizeToFit="NO" id="74">
-                            <rect key="frame" x="30" y="283" width="163" height="25"/>
+                            <rect key="frame" x="20" y="283" width="173" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Thin" family="Apple SD Gothic Neo" pointSize="15"/>
+                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </label>
                     </subviews>
                     <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                </view>
-            </subviews>
-            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.65000000000000002" colorSpace="calibratedRGB"/>
-        </view>
-        <view contentMode="scaleToFill" id="80">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <view contentMode="scaleToFill" id="57">
-                    <rect key="frame" x="73" y="117" width="174" height="226"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="58">
-                            <rect key="frame" x="43" y="169" width="88" height="37"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Cancel">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="cancelButtonClick:" destination="-1" eventType="editingDidEndOnExit" id="71"/>
-                                <action selector="cancelButtonClick:" destination="-1" eventType="touchUpInside" id="72"/>
-                            </connections>
-                        </button>
-                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" animating="YES" style="whiteLarge" id="59">
-                            <rect key="frame" x="70" y="85" width="37" height="37"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        </activityIndicatorView>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Logging in..." textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="60">
-                            <rect key="frame" x="36" y="20" width="103" height="34"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" red="0.40924384120000001" green="0.68901117700000003" blue="0.88363937039999996" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.65000000000000002" colorSpace="calibratedRGB"/>

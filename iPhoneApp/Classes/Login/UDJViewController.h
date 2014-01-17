@@ -46,13 +46,11 @@
 @property(nonatomic,strong) NSNumber* currentRequestNumber;
 @property(nonatomic,strong) UDJUserData* globalData;
 
-@property(nonatomic,strong) IBOutlet UIView* loginView;
-@property(nonatomic,strong) IBOutlet UIView* loginBackgroundView;
-@property(nonatomic,strong) IBOutlet UIButton* cancelButton;
+@property(nonatomic,strong) UIView* loginView;
 
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;  
 
-- (IBAction) OnButtonClick:(id) sender;
+- (IBAction) loginClick:(id) sender;
 - (IBAction) cancelButtonClick:(id)sender;
 
 @end

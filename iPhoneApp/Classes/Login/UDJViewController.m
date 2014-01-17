@@ -27,11 +27,12 @@
 #import "RegisterViewController.h"
 #import "UDJFBViewController.h"
 
+const int LOGIN_VIEW_ID = 100;
 
 
 @implementation UDJViewController
 
-@synthesize loginButton, usernameField, passwordField, registerButton, currentRequestNumber, globalData, loginView, loginBackgroundView, cancelButton;
+@synthesize loginButton, usernameField, passwordField, registerButton, currentRequestNumber, globalData, loginView;
 
 @synthesize managedObjectContext;
 
@@ -115,11 +116,27 @@
 // Show or hide the "logging in.." view; active = YES will show the view
 -(void) toggleLoginView:(BOOL) active
 {
+    if(active && self.loginView == nil){
+        self.loginView = [[UIView alloc] initWithFrame: [UIScreen mainScreen].bounds];
+        [self.view addSubview: self.loginView];
+        [loginView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:.75]];
+        
+        
+        UILabel *loginLabel = [[UILabel alloc] init];
+        [loginLabel setTextColor:[UIColor whiteColor]];
+        [loginLabel setTextAlignment:NSTextAlignmentCenter];
+        [loginLabel setText:@"Logging in"];
+        [loginLabel setFrame:CGRectMake(0, 0, 150, 30)];
+        [loginLabel setCenter:CGPointMake(loginView.frame.size.width / 2, loginView.frame.size.height / 2)];
+        [loginView addSubview:loginLabel];
+    }
+    /*
     loginBackgroundView.hidden = !active;
     loginButton.enabled = !active;
     registerButton.enabled = !active;
     usernameField.enabled = !active;
     passwordField.enabled = !active;
+     */
 }
 - (void)showLoginView
 {
@@ -330,7 +347,7 @@
 }
 
 // Send a login attempt if the user entered a name/pass
-- (IBAction) OnButtonClick:(id) sender {
+- (IBAction) loginClick:(id) sender {
 	// handle user's login attempt
     NSString* username = usernameField.text;
     NSString* password = passwordField.text;
