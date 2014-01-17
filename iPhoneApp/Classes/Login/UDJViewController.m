@@ -129,14 +129,23 @@ const int LOGIN_VIEW_ID = 100;
         [loginLabel setFrame:CGRectMake(0, 0, 150, 30)];
         [loginLabel setCenter:CGPointMake(loginView.frame.size.width / 2, loginView.frame.size.height / 2)];
         [loginView addSubview:loginLabel];
+        
+        // fade in
+        loginView.alpha = 0;
+        [UIView animateWithDuration:0.5 animations:^(void){
+            loginView.alpha = 1;
+        }];
     }
-    /*
-    loginBackgroundView.hidden = !active;
-    loginButton.enabled = !active;
-    registerButton.enabled = !active;
-    usernameField.enabled = !active;
-    passwordField.enabled = !active;
-     */
+    else if(!active && self.loginView != nil){
+        [UIView animateWithDuration:0.5 animations:^(void){
+            loginView.alpha = 0;
+        }completion:^(BOOL finished){
+            if(finished){
+                [loginView removeFromSuperview];
+                loginView = nil;
+            }
+        }];
+    }
 }
 - (void)showLoginView
 {
