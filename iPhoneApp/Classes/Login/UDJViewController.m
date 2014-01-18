@@ -117,10 +117,10 @@ const int LOGIN_VIEW_ID = 100;
 -(void) toggleLoginView:(BOOL) active
 {
     if(active && self.loginView == nil){
-        self.loginView = [[UIView alloc] initWithFrame: [UIScreen mainScreen].bounds];
+        self.loginView = [[UDJBusyView alloc] initWithFrame: [UIScreen mainScreen].bounds];
         [self.view addSubview: self.loginView];
-        [loginView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:.75]];
         
+        [loginView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:.75]];
         
         UILabel *loginLabel = [[UILabel alloc] init];
         [loginLabel setTextColor:[UIColor whiteColor]];
@@ -129,6 +129,12 @@ const int LOGIN_VIEW_ID = 100;
         [loginLabel setFrame:CGRectMake(0, 0, 150, 30)];
         [loginLabel setCenter:CGPointMake(loginView.frame.size.width / 2, loginView.frame.size.height / 2)];
         [loginView addSubview:loginLabel];
+        
+        // init cancel button
+        UIButton* cancelButton = [[UIButton alloc] init];
+        [cancelButton addTarget:self action:@selector(cancelButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        [cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
+        
         
         // fade in
         loginView.alpha = 0;

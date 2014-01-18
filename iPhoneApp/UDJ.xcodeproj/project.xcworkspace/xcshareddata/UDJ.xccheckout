@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>92473F6F-4B54-4055-B300-1B96D52B1ED5</string>
+	<key>IDESourceControlProjectName</key>
+	<string>UDJ</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>C013A651-54BA-40B6-BD44-09DAAFC926EC</key>
+		<string>https://github.com/UDJ/UDJ-iPhone-Client.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>iPhoneApp/UDJ.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>C013A651-54BA-40B6-BD44-09DAAFC926EC</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/UDJ/UDJ-iPhone-Client.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>C013A651-54BA-40B6-BD44-09DAAFC926EC</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C013A651-54BA-40B6-BD44-09DAAFC926EC</string>
+			<key>IDESourceControlWCCName</key>
+			<string>UDJ-iPhone-Client</string>
+		</dict>
+	</array>
+</dict>
+</plist>

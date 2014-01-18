@@ -44,6 +44,7 @@
 		A3470D8B168CCFAA00370597 /* UDJClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A3470D8A168CCFA900370597 /* UDJClient.m */; };
 		A34796A514F85AE0001DEE15 /* default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A34796A414F85AE0001DEE15 /* default.jpg */; };
 		A3495614151EF3D800AAEF7E /* refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = A3495613151EF3D800AAEF7E /* refresh.png */; };
+		A34DE4AC188A43CC00AE3E5F /* UDJBusyView.m in Sources */ = {isa = PBXBuildFile; fileRef = A34DE4AB188A43CC00AE3E5F /* UDJBusyView.m */; };
 		A34FA21B15C22D540022EF46 /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = A34FA21A15C22D540022EF46 /* plus.png */; };
 		A34FA21E15C22E120022EF46 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A34FA21C15C22E120022EF46 /* Default.png */; };
 		A34FA21F15C22E120022EF46 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A34FA21D15C22E120022EF46 /* Default@2x.png */; };
@@ -180,6 +181,9 @@
 		A3470D8A168CCFA900370597 /* UDJClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UDJClient.m; path = Network/UDJClient.m; sourceTree = "<group>"; };
 		A34796A414F85AE0001DEE15 /* default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default.jpg; sourceTree = "<group>"; };
 		A3495613151EF3D800AAEF7E /* refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh.png; sourceTree = "<group>"; };
+		A34DE4AA188A43CC00AE3E5F /* UDJBusyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UDJBusyView.h; sourceTree = "<group>"; };
+		A34DE4AB188A43CC00AE3E5F /* UDJBusyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UDJBusyView.m; sourceTree = "<group>"; };
+		A34DE4AD188A47CC00AE3E5F /* UDJBusyViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UDJBusyViewDelegate.h; sourceTree = "<group>"; };
 		A34FA21A15C22D540022EF46 /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
 		A34FA21C15C22E120022EF46 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		A34FA21D15C22E120022EF46 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
@@ -484,6 +488,9 @@
 				A3CFBEEF15688811002B7658 /* KeychainItemWrapper.m */,
 				A3A2B36E156DD6C600C4FF90 /* UDJStoredData.h */,
 				A3A2B36F156DD6C600C4FF90 /* UDJStoredData.m */,
+				A34DE4AD188A47CC00AE3E5F /* UDJBusyViewDelegate.h */,
+				A34DE4AA188A43CC00AE3E5F /* UDJBusyView.h */,
+				A34DE4AB188A43CC00AE3E5F /* UDJBusyView.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -789,6 +796,7 @@
 				A38DC7C515C4928700BF9A68 /* UDJPlayerManager.m in Sources */,
 				A3443FC515C78D73005A6A67 /* UDJStoredLibraryEntry.m in Sources */,
 				A3E3D7CE15DDDAA000EBF087 /* PlayerViewController.m in Sources */,
+				A34DE4AC188A43CC00AE3E5F /* UDJBusyView.m in Sources */,
 				A325E10015F1640900D54062 /* UDJPlayerInfoManager.m in Sources */,
 				A31837441604FB5400D9FC35 /* ParticipantsViewController.m in Sources */,
 				A31837481604FBB600D9FC35 /* ParticipantManager.m in Sources */,

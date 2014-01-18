@@ -22,8 +22,9 @@
 #import "UDJStoredData.h"
 #import <QuartzCore/QuartzCore.h>
 #import <FacebookSDK/FacebookSDK.h>
-@interface UDJViewController : UIViewController <UDJRequestDelegate, UIAlertViewDelegate, FBLoginViewDelegate> {
+#import "UDJBusyView.h"
 
+@interface UDJViewController : UIViewController <UDJRequestDelegate, UIAlertViewDelegate, FBLoginViewDelegate> {
 	
     UIButton *loginButton;
     UITextField *usernameField;
@@ -35,8 +36,7 @@
     UDJUserData* globalData;
     
     UIView* loginBackgroundView;
-    UIView* loginView;
-    UIButton* cancelButton;
+    UDJBusyView* loginView;
 }
 
 @property(strong,nonatomic) IBOutlet UIButton *loginButton;
@@ -46,7 +46,7 @@
 @property(nonatomic,strong) NSNumber* currentRequestNumber;
 @property(nonatomic,strong) UDJUserData* globalData;
 
-@property(nonatomic,strong) UIView* loginView;
+@property(nonatomic,strong) UDJBusyView* loginView;
 
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;  
 
