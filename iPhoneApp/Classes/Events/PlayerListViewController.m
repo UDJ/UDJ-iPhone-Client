@@ -37,7 +37,7 @@
 @synthesize statusLabel, globalData, currentRequestNumber;
 @synthesize playerSearchBar, findNearbyButton, cancelSearchButton, searchIndicatorView;
 @synthesize lastSearchType, lastSearchQuery;
-@synthesize joiningBackgroundView, joiningView;
+@synthesize joiningView;
 @synthesize shouldShowMyPlayer;
 
 #pragma mark - Alert view delegate
@@ -179,12 +179,32 @@
 
 // Show or hide the "joining event..." view; active = YES will show the view
 -(void) toggleJoiningView:(BOOL) active{
-    joiningBackgroundView.hidden = !active;
+    const float DURATION = .35;
+    if(active){
+        if(joiningView == nil){
+            joiningView = [[UDJBusyView alloc] initWithFrame: [UIScreen mainScreen].bounds];
+            joiningView.delegate = self;
+            [self.view addSubview: joiningView];
+            NSString* playerName = [UDJPlayerData sharedPlayerData].currentPlayer.name;
+            [joiningView setTitle:[NSString stringWithFormat:@"Joining %@", playerName]];
+        }
+        
+        // fade in
+        joiningView.alpha = 0;
+        [UIView animateWithDuration:DURATION animations:^(void){
+            joiningView.alpha = 1;
+        }];
+    }
+    else if(!active && self.joiningView != nil){
+        [UIView animateWithDuration:DURATION animations:^(void){
+            joiningView.alpha = 0;
+        }];
+    }
 }
 
 // When user presses cancel, hide login view and let controller know
 // we aren't waiting on any requests
--(IBAction)cancelButtonClick:(id)sender{
+-(void)actionCanceled{
     self.currentRequestNumber = [NSNumber numberWithInt: -1];
     [self.tableView reloadData];
     [self toggleJoiningView:NO];

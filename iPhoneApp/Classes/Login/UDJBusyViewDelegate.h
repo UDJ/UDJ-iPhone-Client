@@ -10,4 +10,7 @@
 
 @protocol UDJBusyViewDelegate <NSObject>
 
+@required
+-(void)actionCanceled;
+
 @end

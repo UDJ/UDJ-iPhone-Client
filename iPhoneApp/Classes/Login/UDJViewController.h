@@ -24,7 +24,7 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import "UDJBusyView.h"
 
-@interface UDJViewController : UIViewController <UDJRequestDelegate, UIAlertViewDelegate, FBLoginViewDelegate> {
+@interface UDJViewController : UIViewController <UDJRequestDelegate, UIAlertViewDelegate, FBLoginViewDelegate, UDJBusyViewDelegate> {
 	
     UIButton *loginButton;
     UITextField *usernameField;

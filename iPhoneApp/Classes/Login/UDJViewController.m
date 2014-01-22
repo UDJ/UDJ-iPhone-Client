@@ -116,34 +116,21 @@ const int LOGIN_VIEW_ID = 100;
 // Show or hide the "logging in.." view; active = YES will show the view
 -(void) toggleLoginView:(BOOL) active
 {
+    const float DURATION = .35;
     if(active && self.loginView == nil){
-        self.loginView = [[UDJBusyView alloc] initWithFrame: [UIScreen mainScreen].bounds];
-        [self.view addSubview: self.loginView];
-        
-        [loginView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:.75]];
-        
-        UILabel *loginLabel = [[UILabel alloc] init];
-        [loginLabel setTextColor:[UIColor whiteColor]];
-        [loginLabel setTextAlignment:NSTextAlignmentCenter];
-        [loginLabel setText:@"Logging in"];
-        [loginLabel setFrame:CGRectMake(0, 0, 150, 30)];
-        [loginLabel setCenter:CGPointMake(loginView.frame.size.width / 2, loginView.frame.size.height / 2)];
-        [loginView addSubview:loginLabel];
-        
-        // init cancel button
-        UIButton* cancelButton = [[UIButton alloc] init];
-        [cancelButton addTarget:self action:@selector(cancelButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-        [cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
-        
+        loginView = [[UDJBusyView alloc] initWithFrame: [UIScreen mainScreen].bounds];
+        loginView.delegate = self;
+        [self.view addSubview: loginView];
+        [loginView setTitle:@"Logging in"];
         
         // fade in
         loginView.alpha = 0;
-        [UIView animateWithDuration:0.5 animations:^(void){
+        [UIView animateWithDuration:DURATION animations:^(void){
             loginView.alpha = 1;
         }];
     }
     else if(!active && self.loginView != nil){
-        [UIView animateWithDuration:0.5 animations:^(void){
+        [UIView animateWithDuration:DURATION animations:^(void){
             loginView.alpha = 0;
         }completion:^(BOOL finished){
             if(finished){
@@ -356,7 +343,7 @@ const int LOGIN_VIEW_ID = 100;
 
 // When user presses cancel, hide login view and let controller know
 // we aren't waiting on any requests
--(IBAction)cancelButtonClick:(id)sender{
+-(void)actionCanceled{
     self.currentRequestNumber = [NSNumber numberWithInt: -1];
     [self toggleLoginView:NO];
 }

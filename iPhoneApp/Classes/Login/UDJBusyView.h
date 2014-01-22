@@ -11,4 +11,11 @@
 
 @interface UDJBusyView : UIView
 
+@property (nonatomic, weak) id<UDJBusyViewDelegate> delegate;
+
+@property (nonatomic, strong) UILabel *titleLabel;
+
+-(void)setTitle:(NSString*)title;
+-(void)hideAndRemoveFromSuperView;
+
 @end

@@ -21,6 +21,7 @@
 #import "UDJUserData.h"
 #import "UDJPlayerData.h"
 #import "PullRefreshTableViewController.h"
+#import "UDJBusyView.h"
 
 enum SearchType {
     SearchTypeNull = 0,
@@ -28,7 +29,7 @@ enum SearchType {
     SearchTypeNearby = 2
 };
 
-@interface PlayerListViewController : UIViewController <UIAlertViewDelegate, UDJRequestDelegate, UISearchBarDelegate>
+@interface PlayerListViewController : UIViewController <UIAlertViewDelegate, UDJRequestDelegate, UISearchBarDelegate, UDJBusyViewDelegate>
 
 
 @property enum SearchType lastSearchType;
@@ -48,8 +49,7 @@ enum SearchType {
 @property(nonatomic,strong) IBOutlet UIButton* cancelSearchButton;
 @property(nonatomic,strong) IBOutlet UIActivityIndicatorView* searchIndicatorView;
 
-@property(nonatomic,strong) IBOutlet UIView* joiningView;
-@property(nonatomic,strong) IBOutlet UIView* joiningBackgroundView;
+@property(nonatomic,strong) UDJBusyView* joiningView;
 
 @property BOOL shouldShowMyPlayer;
 
