@@ -177,6 +177,7 @@ typedef enum{
     cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:18];
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    [cell setBackgroundColor:[UIColor clearColor]];
     
     return cell;
 }

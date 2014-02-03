@@ -425,6 +425,7 @@
 
 // joinEvent: login was successful, show playlist view
 -(void) joinEvent{
+    [self toggleJoiningView:NO];
     MainTabBarController* viewController = [[MainTabBarController alloc] initWithNibName:@"MainTabBarController" bundle:[NSBundle mainBundle]];
     [viewController initForPlayerMode: NO];
     [self.navigationController pushViewController:viewController animated:YES];

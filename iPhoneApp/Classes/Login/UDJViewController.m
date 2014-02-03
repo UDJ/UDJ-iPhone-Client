@@ -392,10 +392,12 @@ const int LOGIN_VIEW_ID = 100;
     }
     else if([request isPOST]) {
         // If we got a response back from our authenticate request
-        if([response isOK])
+        if([response isOK]){
             [self handleAuth:response];
-        else
+        }
+        else{
             [self denyAuth:response];
+        }
     }
     
     self.currentRequestNumber = [NSNumber numberWithInt: -1];
