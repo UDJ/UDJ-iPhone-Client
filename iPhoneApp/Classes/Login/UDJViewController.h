@@ -51,7 +51,6 @@
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;  
 
 - (IBAction) loginClick:(id) sender;
-- (IBAction) cancelButtonClick:(id)sender;
 
 @end
 

@@ -84,6 +84,7 @@ const int LOGIN_VIEW_ID = 100;
 
 -(void)loginViewShowingLoggedInUser:(FBLoginView *)loginView {
     NSLog(@"FB Logged in");
+    [self toggleLoginView:YES];
 }
 
 -(void)loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user {
@@ -260,7 +261,6 @@ const int LOGIN_VIEW_ID = 100;
     // remember the request we are waiting on
     self.currentRequestNumber = request.userData;
     
-    [self toggleLoginView:YES];
     [request send];
 }
 
@@ -290,7 +290,11 @@ const int LOGIN_VIEW_ID = 100;
     // remember the request we are waiting on
     self.currentRequestNumber = request.userData;
     
+    // show "loggin in" view and hide keyboard
     [self toggleLoginView:YES];
+    [self.usernameField resignFirstResponder];
+    [self.passwordField resignFirstResponder];
+    
     [request send];
     
 }
