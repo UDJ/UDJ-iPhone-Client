@@ -132,8 +132,10 @@ typedef enum{
 
 -(IBAction)addButtonClick:(id)sender{
     UIButton* button = (UIButton*)sender;
-    LibraryEntryCell* parentCell = (LibraryEntryCell*)button.superview.superview;
-    [self sendAddRequestForSong:parentCell.song playerID: [UDJPlayerData sharedPlayerData].currentPlayer.playerID];
+    // TODO: admittedly, storing the song index in the button tag is pretty janky,
+    // should implement a cleaner solution "later"
+    UDJSong *song = [self.resultList songAtIndex:button.tag];
+    [self sendAddRequestForSong:song playerID: [UDJPlayerData sharedPlayerData].currentPlayer.playerID];
     [self showAddNotification: button.titleLabel.text];
 }
 
@@ -158,11 +160,10 @@ typedef enum{
     cell.artistLabel.text = song.artist;
     cell.song = song;
     cell.addButton.titleLabel.text = song.title;
+    cell.addButton.tag = [indexPath row];
     
     [cell.addButton addTarget:self action:@selector(addButtonClick:)   
              forControlEvents:UIControlEventTouchUpInside];
-    
-    // TODO: check if song is already on playlist, yes = hide/fade add button
     
     return cell;
 }
