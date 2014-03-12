@@ -112,15 +112,10 @@ typedef enum{
 }
 
 -(void)initNavBar{
-    UIColor* blueTintColor = [UIColor colorWithRed:(35.0/255.0) green:(59.0/255.0) blue:(79.0/255.0) alpha:1];
-    
     [self.navigationItem setTitle:@""];
-    [self.navigationController.navigationBar setTintColor:blueTintColor];
-    
     
     // set up search bar
-    searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
-    [searchBar setTintColor:blueTintColor];
+    searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 200, 40)];
     [searchBar setPlaceholder:@"Search for songs"];
     [searchBar setDelegate:self];
     UIBarButtonItem* searchBarItem = [[UIBarButtonItem alloc] initWithCustomView:searchBar];

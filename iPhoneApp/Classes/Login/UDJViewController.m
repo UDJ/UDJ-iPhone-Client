@@ -317,7 +317,7 @@ const int LOGIN_VIEW_ID = 100;
     globalData.userID=[responseDict valueForKey:@"user_id"];
         
     //TODO: may need to change userID to [userID intValue]
-    globalData.headers = [NSDictionary dictionaryWithObjectsAndKeys:globalData.ticket, @"X-Udj-Ticket-Hash", nil];
+    globalData.headers = [NSMutableDictionary dictionaryWithObjectsAndKeys:globalData.ticket, @"X-Udj-Ticket-Hash", nil];
         
     // load the player list view
     PlayerListViewController* viewController = [[PlayerListViewController alloc] initWithNibName:@"PlayerListViewController" bundle:[NSBundle mainBundle]];
