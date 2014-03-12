@@ -106,7 +106,7 @@
         ticket=[responseDict valueForKey:@"ticket_hash"];
         userID=[responseDict valueForKey:@"user_id"];
         
-        headers = [NSDictionary dictionaryWithObjectsAndKeys:ticket, @"X-Udj-Ticket-Hash", nil];
+        headers = [NSMutableDictionary dictionaryWithObjectsAndKeys:ticket, @"X-Udj-Ticket-Hash", nil];
         
         NSLog(@"renewed ticket");
     }
