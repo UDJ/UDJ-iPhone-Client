@@ -28,7 +28,7 @@ enum UDJQueryType {
 };
 
 @interface SongListViewController : UIViewController{
-    NSInteger MAX_RESULTS;
+   
 }
 
 

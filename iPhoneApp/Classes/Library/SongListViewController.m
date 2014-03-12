@@ -24,6 +24,8 @@
 #import "UDJPlaylist.h"
 #import "UDJClient.h"
 
+static const NSInteger MAX_RESULTS = 100;
+
 typedef enum{
     ExitReasonInactive,
     ExitReasonKicked
@@ -60,7 +62,6 @@ typedef enum{
     // Do any additional setup after loading the view from its nib.
     
     globalData = [UDJUserData sharedUDJData];
-    MAX_RESULTS = 100;
     
     searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
     

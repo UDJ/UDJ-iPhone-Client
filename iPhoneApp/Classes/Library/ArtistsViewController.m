@@ -115,11 +115,11 @@ typedef enum{
     [self.navigationItem setTitle:@""];
     
     // set up search bar
-    searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 200, 40)];
+    searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 250, 40)];
     [searchBar setPlaceholder:@"Search for songs"];
     [searchBar setDelegate:self];
     UIBarButtonItem* searchBarItem = [[UIBarButtonItem alloc] initWithCustomView:searchBar];
-    [self.navigationItem setLeftBarButtonItem: searchBarItem];
+    [self.navigationItem setTitleView:searchBar];
     [searchBar sizeToFit];
 }
 
